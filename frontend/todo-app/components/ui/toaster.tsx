@@ -37,15 +37,15 @@ export function Toaster() {
         const icon = getIcon(variant as string)
 
         return (
-          <Toast key={id} variant={toastVariant} {...props} className="flex gap-3">
+          <Toast key={id} variant={toastVariant} {...props} className="flex gap-4 items-start">
             {icon}
-            <div className="flex-1">
-              {title && <ToastTitle className="font-semibold">{title}</ToastTitle>}
+            <div className="flex-1 min-w-0">
+              {title && <ToastTitle className="font-semibold text-base leading-tight">{title}</ToastTitle>}
               {description && (
-                <ToastDescription className="text-sm opacity-90">{description}</ToastDescription>
+                <ToastDescription className="text-sm opacity-90 mt-1">{description}</ToastDescription>
               )}
             </div>
-            {action}
+            {action && <div className="flex-shrink-0">{action}</div>}
             <ToastClose />
           </Toast>
         )
