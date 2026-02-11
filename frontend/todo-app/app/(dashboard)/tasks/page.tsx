@@ -24,11 +24,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function TasksPage() {
-  const { user, isAuthenticated, signOut } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const router = useRouter();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
 
   const userRef = useRef(user);
   useEffect(() => {
@@ -79,6 +80,7 @@ export default function TasksPage() {
     toast({
       title: 'Task Created',
       description: 'Your new task has been added successfully.',
+      variant: 'success',
     });
   };
 
@@ -94,6 +96,7 @@ export default function TasksPage() {
       toast({
         title: 'Task Updated',
         description: 'Changes saved successfully.',
+        variant: 'success',
       });
     } catch (error) {
       console.error('Failed to update task in backend:', error);
@@ -106,7 +109,7 @@ export default function TasksPage() {
     try {
       await apiClient.deleteTask(user.id, taskId);
       setTasks(prev => prev.filter(task => task.id !== taskId));
-      toast({ title: 'Task Deleted', description: 'The task has been removed.' });
+      toast({ title: 'Task Deleted', description: 'The task has been removed.', variant: 'success' });
     } catch (error) {
       console.error('Failed to delete task in backend:', error);
       toast({ title: 'Delete Failed', description: 'Could not remove the task. Please try again.', variant: 'destructive' });
@@ -165,7 +168,15 @@ export default function TasksPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
               {/* Create Task Card */}
               <motion.button
-                onClick={() => setShowForm(true)}
+                onClick={() => {
+                  setShowForm(true);
+                  // Auto-scroll to form on mobile
+                  setTimeout(() => {
+                    if (formRef.current && window.innerWidth < 768) {
+                      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }, 100);
+                }}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -256,10 +267,11 @@ export default function TasksPage() {
             {/* Task Form */}
             {showForm && (
               <motion.div
+                ref={formRef}
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="mb-8 bg-white dark:bg-slate-900/80 rounded-2xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 p-8 border border-gray-200/60 dark:border-slate-800/60"
+                className="mb-8 bg-white dark:bg-slate-900/80 rounded-2xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 p-6 md:p-8 border border-gray-200/60 dark:border-slate-800/60"
               >
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">

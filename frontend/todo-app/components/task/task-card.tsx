@@ -123,13 +123,14 @@ export default function TaskCard({
           </div>
 
           {/* Actions */}
-          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="flex gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
             {!isEditing && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsEditing(true)}
-                className="h-8 w-8 p-0 text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg"
+                className="h-8 w-8 p-0 text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg transition-all duration-200"
+                title="Edit task"
               >
                 <PencilIcon className="h-4 w-4" />
               </Button>
@@ -138,7 +139,8 @@ export default function TaskCard({
               variant="ghost"
               size="sm"
               onClick={handleDelete}
-              className="h-8 w-8 p-0 text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg"
+              className="h-8 w-8 p-0 text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200"
+              title="Delete task"
             >
               <Trash2 className="h-4 w-4" />
             </Button>

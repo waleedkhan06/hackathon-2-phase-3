@@ -100,22 +100,22 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-400 dark:to-blue-400 bg-clip-text text-transparent">
+            <Link href="/" className="text-xl md:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 dark:from-indigo-400 dark:to-blue-400 bg-clip-text text-transparent flex-shrink-0">
               PrimeTask
             </Link>
           </motion.div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <ThemeToggle />
             {isAuthenticated ? (
-              <Button asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white">
-                <Link href="/tasks">Go to Dashboard</Link>
+              <Button asChild size="sm" className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white whitespace-nowrap text-xs md:text-sm">
+                <Link href="/tasks">Dashboard</Link>
               </Button>
             ) : (
               <>
-                <Button variant="outline" asChild className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 bg-transparent">
+                <Button variant="outline" asChild size="sm" className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 bg-transparent text-xs md:text-sm whitespace-nowrap">
                   <Link href="/sign-in">Sign In</Link>
                 </Button>
-                <Button asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white">
+                <Button asChild size="sm" className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white text-xs md:text-sm whitespace-nowrap">
                   <Link href="/sign-up">Sign Up</Link>
                 </Button>
               </>
@@ -124,9 +124,8 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <main className="max-w-7xl mx-auto">
-        <section className="py-20 px-4 md:px-8">
+        {/* Hero Section */}
+        <section className="py-16 md:py-20 px-4 md:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -135,14 +134,14 @@ export default function Home() {
               className="mb-6"
             >
               <div className="inline-block mb-4">
-                <span className="px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-medium">
-                  ✨ The modern way to manage your tasks
+                <span className="px-3 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs md:text-sm font-medium">
+                  The modern way to manage your tasks
                 </span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 leading-tight text-balance">
                 Stay Organized, <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Stay Ahead</span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed text-balance">
                 Experience the future of task management with beautiful design, smooth animations, and powerful features that keep you productive.
               </p>
             </motion.div>
@@ -151,18 +150,18 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4 mb-16"
+              className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 mb-16"
             >
               {isAuthenticated ? (
-                <Button size="lg" asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white h-12 text-base">
+                <Button size="lg" asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white h-11 md:h-12 text-sm md:text-base px-6 md:px-8">
                   <Link href="/tasks">View My Tasks</Link>
                 </Button>
               ) : (
                 <>
-                  <Button size="lg" asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white h-12 text-base">
+                  <Button size="lg" asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white h-11 md:h-12 text-sm md:text-base px-6 md:px-8">
                     <Link href="/sign-up">Get Started Free</Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 h-12 text-base bg-transparent">
+                  <Button size="lg" variant="outline" asChild className="border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 h-11 md:h-12 text-sm md:text-base px-6 md:px-8 bg-transparent">
                     <Link href="/sign-in">Sign In</Link>
                   </Button>
                 </>

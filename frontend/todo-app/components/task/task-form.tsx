@@ -109,13 +109,13 @@ export default function TaskForm({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}
-        className="space-y-2"
+        className="space-y-3"
       >
         <Label
           htmlFor="title"
-          className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300"
+          className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200"
         >
-          <Type className="w-4 h-4 text-indigo-500" />
+          <Type className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
           Task Title
         </Label>
         <Input
@@ -123,17 +123,21 @@ export default function TaskForm({
           type="text"
           placeholder="What needs to be done?"
           {...register('title')}
-          className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
+          className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 text-base shadow-sm ${
             errors.title
-              ? 'border-red-400 dark:border-red-500 focus:ring-red-400'
-              : 'border-gray-200 dark:border-slate-600 focus:border-indigo-400 dark:focus:border-indigo-500'
-          } dark:bg-slate-700/50 dark:text-white focus:ring-2 focus:ring-indigo-500/20 focus:border-transparent`}
+              ? 'border-red-400 dark:border-red-500 bg-red-50 dark:bg-red-900/20 focus:ring-red-400 focus:border-red-500'
+              : 'border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/60 text-gray-900 dark:text-white focus:border-indigo-500 dark:focus:border-indigo-400'
+          } focus:ring-2 focus:ring-indigo-500/30 focus:outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500`}
         />
         {errors.title && (
-          <p className="text-red-500 dark:text-red-400 text-sm font-medium flex items-center gap-1">
-            <AlertCircle className="w-3 h-3" />
+          <motion.p 
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-red-600 dark:text-red-400 text-sm font-medium flex items-center gap-1.5"
+          >
+            <AlertCircle className="w-4 h-4 flex-shrink-0" />
             {errors.title.message}
-          </p>
+          </motion.p>
         )}
       </motion.div>
 
@@ -142,22 +146,22 @@ export default function TaskForm({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="space-y-2"
+        className="space-y-3"
       >
         <Label
           htmlFor="description"
-          className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300"
+          className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200"
         >
-          <FileText className="w-4 h-4 text-indigo-500" />
+          <FileText className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
           Description
-          <span className="text-xs font-normal text-gray-400">(Optional)</span>
+          <span className="text-xs font-normal text-gray-500 dark:text-gray-400">(Optional)</span>
         </Label>
         <Textarea
           id="description"
           placeholder="Add more details about your task..."
           rows={4}
           {...register('description')}
-          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-slate-600 dark:bg-slate-700/50 dark:text-white focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-400 dark:focus:border-indigo-500 transition-all duration-200 resize-none"
+          className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700/60 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 dark:focus:border-indigo-400 transition-all duration-200 resize-none shadow-sm placeholder:text-gray-400 dark:placeholder:text-gray-500"
         />
       </motion.div>
 
@@ -166,12 +170,12 @@ export default function TaskForm({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.15 }}
-        className="flex gap-3 pt-2"
+        className="flex flex-col sm:flex-row gap-3 pt-4"
       >
         <Button
           type="submit"
           disabled={submitting || isLoading}
-          className="flex-1 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-md shadow-indigo-500/20 hover:shadow-lg hover:shadow-indigo-500/30"
+          className="flex-1 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 disabled:from-indigo-400 disabled:to-blue-400 text-white font-semibold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 hover:shadow-xl hover:shadow-indigo-500/35 disabled:shadow-md"
         >
           {submitting ? (
             <>
@@ -190,7 +194,7 @@ export default function TaskForm({
             type="button"
             onClick={onCancel}
             variant="outline"
-            className="flex-1 border-2 border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-300 py-3 rounded-xl transition-all hover:bg-gray-50 dark:hover:bg-slate-700 bg-transparent flex items-center justify-center gap-2"
+            className="flex-1 border-2 border-gray-300 dark:border-slate-500 text-gray-700 dark:text-gray-300 py-3 rounded-xl transition-all hover:bg-gray-100 dark:hover:bg-slate-700/60 bg-white dark:bg-slate-800/30 flex items-center justify-center gap-2 font-medium"
           >
             <X className="w-4 h-4" />
             Cancel
