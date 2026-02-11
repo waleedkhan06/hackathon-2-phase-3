@@ -10,7 +10,6 @@ import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { ThemeToggle } from '@/components/theme/theme-toggle';
 import { toast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Lock, User, ShieldCheck } from 'lucide-react';
@@ -75,7 +74,7 @@ export default function SignUpPage() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-slate-950">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-white/20 dark:border-white/10 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4">
+        <div className="max-w-7xl mx-auto flex h-16 items-center px-4">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -85,7 +84,6 @@ export default function SignUpPage() {
               PrimeTask
             </Link>
           </motion.div>
-          <ThemeToggle />
         </div>
       </header>
 
