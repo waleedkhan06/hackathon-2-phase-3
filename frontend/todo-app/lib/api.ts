@@ -73,7 +73,10 @@ class ApiClient {
         const errorMessage = errorData.error || `HTTP error! status: ${response.status}`;
 
         // Provide more user-friendly error messages
-        if (errorMessage.toLowerCase().includes("already exists")) {
+        if (response.status === 409) {
+          // Handle conflict errors (like email already exists)
+          throw new Error("A user with this email already exists. Please try logging in or use a different email.");
+        } else if (errorMessage.toLowerCase().includes("already exists")) {
           throw new Error("A user with this email already exists. Please try logging in or use a different email.");
         } else if (errorMessage.toLowerCase().includes("incorrect email") || errorMessage.toLowerCase().includes("incorrect password")) {
           throw new Error("Incorrect email or password. Please try again.");

@@ -134,9 +134,33 @@ export default function TasksPage() {
   const userName = user?.name || 'there';
   const getGreeting = () => {
     const hour = new Date().getHours();
-    if (hour < 12) return 'Good morning';
-    if (hour < 17) return 'Good afternoon';
-    return 'Good evening';
+    const greetings = {
+      morning: [
+        'Rise and shine! ☀️',
+        'Good morning! Time to conquer today',
+        'New day, new goals! 🚀',
+        'Good morning! Let\'s make today productive',
+      ],
+      afternoon: [
+        'Good afternoon! Keep the momentum going 💪',
+        'Afternoon productivity boost incoming ⚡',
+        'Good afternoon! You\'re doing great',
+        'Halfway through the day, almost there! 🎯',
+      ],
+      evening: [
+        'Good evening! Wind down and review today',
+        'Evening reflection time 🌙',
+        'Good evening! Great work today',
+        'Wrap up the day strong! 🌟',
+      ],
+    };
+
+    let period = 'morning';
+    if (hour >= 12 && hour < 17) period = 'afternoon';
+    else if (hour >= 17) period = 'evening';
+
+    const periodGreetings = greetings[period as keyof typeof greetings];
+    return periodGreetings[Math.floor(Math.random() * periodGreetings.length)];
   };
 
   return (

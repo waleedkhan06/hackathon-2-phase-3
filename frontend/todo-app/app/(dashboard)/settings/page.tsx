@@ -33,16 +33,16 @@ export default function SettingsPage() {
 
   return (
     <AuthGuard requireAuth={true} redirectTo="/sign-in">
-      <div className="min-h-full flex flex-col bg-gradient-to-b from-gray-50 to-white dark:from-slate-900 dark:to-slate-950">
+      <div className="min-h-full flex flex-col">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="px-4 md:px-8 py-8 border-b border-gray-200/50 dark:border-slate-800/50"
+          className="px-4 md:px-8 py-8"
         >
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+          <div className="max-w-5xl mx-auto">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2 text-balance">
               Settings
             </h1>
             <p className="text-gray-600 dark:text-gray-400 text-base">
@@ -53,7 +53,7 @@ export default function SettingsPage() {
 
         {/* Content */}
         <div className="flex-1 px-4 md:px-8 py-8">
-          <div className="max-w-3xl mx-auto space-y-8">
+          <div className="max-w-5xl mx-auto space-y-8">
             {/* Theme Settings */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}

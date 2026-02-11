@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import Footer from '@/components/layout/footer';
 import { Mail, MessageCircle, FileQuestion } from 'lucide-react';
