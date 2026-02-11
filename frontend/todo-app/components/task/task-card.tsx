@@ -45,8 +45,8 @@ export default function TaskCard({
       layout
       className={`group relative bg-white dark:bg-slate-800/80 rounded-2xl border-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
         task.completed
-          ? 'border-emerald-400 dark:border-emerald-500'
-          : 'border-indigo-500 dark:border-indigo-600 hover:border-indigo-600 dark:hover:border-indigo-500'
+          ? 'border-emerald-500 dark:border-emerald-500'
+          : 'border-indigo-600 dark:border-indigo-600 hover:border-indigo-700 dark:hover:border-indigo-500'
       } ${isDeleting ? 'opacity-0 scale-95' : 'opacity-100 scale-100'} overflow-hidden`}
     >
       {/* Top accent line */}

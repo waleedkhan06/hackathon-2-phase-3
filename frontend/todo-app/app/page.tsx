@@ -196,10 +196,10 @@ export default function Home() {
                     variants={cardVariants}
                     whileHover="hover"
                     whileTap="hover"
-                    className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 p-8 border border-gray-100 dark:border-slate-700 shadow-sm hover:shadow-xl active:shadow-xl transition-all duration-300"
+                    className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 p-8 border-2 border-gray-300 dark:border-slate-700 shadow-sm hover:shadow-xl active:shadow-xl transition-all duration-300"
                   >
                     {/* Gradient background on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 group-active:opacity-10 transition-opacity duration-300`} />
                     
                     {/* Icon Container */}
                     <div className={`mb-6 inline-flex rounded-xl bg-gradient-to-br ${feature.color} p-3`}>

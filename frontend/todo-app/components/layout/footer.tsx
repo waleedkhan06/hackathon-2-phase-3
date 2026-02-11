@@ -11,7 +11,7 @@ const footerLinks: {
   legal: FooterLink[];
 } = {
   product: [
-    { label: 'Features', href: '/#features' },
+    { label: 'Features', href: '/features' },
     { label: 'Get Started', href: '/sign-up' },
   ],
   support: [
