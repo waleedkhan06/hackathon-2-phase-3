@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: Todo AI Chatbot API
+  version: 1.0.0
+  description: API for interacting with the AI-powered Todo chatbot.
+
+paths:
+  /api/{user_id}/chat:
+    post:
+      summary: Send a message to the AI chatbot and get a response.
+      operationId: chatWithBot
+      parameters:
+        - in: path
+          name: user_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: The ID of the authenticated user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: The user's message to the chatbot.
+                  example: "Add a task to buy groceries"
+              required:
+                - message
+      responses:
+        '200':
+          description: Successful response from the chatbot.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversation_id:
+                    type: string
+                    format: uuid
+                    description: The ID of the current conversation.
+                  response:
+                    type: string
+                    description: The AI's natural language response.
+                    example: "Task added: buy groceries"
+                  action_taken:
+                    type: string
+                    nullable: true
+                    description: Describes the action taken by the AI (e.g., "task_created", "task_listed").
+                  tasks:
+                    type: array
+                    nullable: true
+                    description: List of tasks if the action involved listing or retrieving tasks.
+                    items:
+                      $ref: '#/components/schemas/Task'
+                required:
+                  - conversation_id
+                  - response
+        '400':
+          description: Bad request (e.g., missing message).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized (e.g., invalid JWT).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden (e.g., user_id in path does not match authenticated user).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        due_date:
+          type: string
+          format: date-time
+          nullable: true
+        status:
+          type: string
+          enum: [pending, completed]
+        user_id:
+          type: string
+          format: uuid
+      required:
+        - id
+        - title
+        - status
+        - user_id
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "INVALID_INPUT"
+        message:
+          type: string
+          example: "The provided message is empty."
