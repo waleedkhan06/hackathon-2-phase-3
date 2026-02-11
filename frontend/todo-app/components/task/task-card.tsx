@@ -43,10 +43,10 @@ export default function TaskCard({
   return (
     <motion.div
       layout
-      className={`group relative bg-white dark:bg-slate-800/80 rounded-2xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+      className={`group relative bg-white dark:bg-slate-800/80 rounded-2xl border-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
         task.completed
-          ? 'border-emerald-200 dark:border-emerald-800/40'
-          : 'border-gray-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700/50'
+          ? 'border-emerald-400 dark:border-emerald-500'
+          : 'border-indigo-500 dark:border-indigo-600 hover:border-indigo-600 dark:hover:border-indigo-500'
       } ${isDeleting ? 'opacity-0 scale-95' : 'opacity-100 scale-100'} overflow-hidden`}
     >
       {/* Top accent line */}
@@ -123,7 +123,7 @@ export default function TaskCard({
           </div>
 
           {/* Actions */}
-          <div className="flex gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
+          <div className="flex gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200 active:opacity-100">
             {!isEditing && (
               <Button
                 variant="ghost"

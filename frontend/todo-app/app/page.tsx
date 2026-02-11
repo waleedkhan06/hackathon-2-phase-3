@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
-import { ThemeToggle } from '@/components/theme/theme-toggle';
 import { motion } from 'framer-motion';
 import {
   CheckCircle2,
@@ -105,7 +104,6 @@ export default function Home() {
             </Link>
           </motion.div>
           <div className="flex items-center gap-4">
-            <ThemeToggle />
             {isAuthenticated ? (
               <Button asChild className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white">
                 <Link href="/tasks">Go to Dashboard</Link>
@@ -197,7 +195,8 @@ export default function Home() {
                     key={index}
                     variants={cardVariants}
                     whileHover="hover"
-                    className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 p-8 border border-gray-100 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
+                    whileTap="hover"
+                    className="group relative overflow-hidden rounded-2xl bg-white dark:bg-slate-800 p-8 border border-gray-100 dark:border-slate-700 shadow-sm hover:shadow-xl active:shadow-xl transition-all duration-300"
                   >
                     {/* Gradient background on hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
