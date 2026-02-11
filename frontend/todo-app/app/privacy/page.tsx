@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Footer from '@/components/layout/footer';
 import { motion } from 'framer-motion';
@@ -16,7 +18,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-4xl mx-auto px-4 md:px-8 py-20">
+      <main className="flex-1 max-w-5xl mx-auto px-4 md:px-8 py-20">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

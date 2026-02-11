@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Footer from '@/components/layout/footer';
 import { Mail, MessageCircle, FileQuestion } from 'lucide-react';
@@ -59,7 +61,7 @@ export default function HelpPage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-4xl mx-auto px-4 md:px-8 py-16 md:py-20">
+      <main className="flex-1 max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
